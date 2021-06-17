@@ -23,7 +23,7 @@ const Container = Styled.View`
 
     ios -> 사용자 권한 추가 (ios/native_weather/Info.plist)
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>날씨 정보를 가져오기 위해서는 위치 정보 권한이 필요합니다</string>
+    <string>날씨 정보를 가져오기 위해서는 위치 정보 권한이 필요합니다</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>날씨 정보를 가져오기 위해서는 위치 정보 권한이 필요합니다</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
