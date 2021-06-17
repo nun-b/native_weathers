@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Alert } from 'react-native';
+import { FlatList, Alert, Platform } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 
 import Styled from 'styled-components/native';
@@ -57,8 +57,15 @@ const WeatherView = ({}: Props) => {
         setWeatherInfo({
             isLoading: false,
         });
+
+        console.log('Platform.OS :: ' + Platform.OS);
+        if (Platform.OS === 'ios') {
+            console.log('---> ios <-------');
+            Geolocation.requestAuthorization('always');
+        }
         Geolocation.getCurrentPosition(
             position => {
+                console.log('------------------- 2');
                 const { latitude, longitude } = position.coords;
                 fetch(
                     `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${API_KEY}&units=metric`,
@@ -85,6 +92,7 @@ const WeatherView = ({}: Props) => {
                 showError('위치 정보를 가져오는데 실패하였습니다.');
             },
         );
+        console.log('------------------- 3');
     };
 
     const showError = (message: string): void => {
